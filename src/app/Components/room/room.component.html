@@ -1,7 +1,52 @@
 <!DOCTYPE html>
-<ul>
-    <li *ngFor="let r of rooms;">
-        {{r.roomName}} {{r.temp}} {{r.creationDate}}
-    </li>
-</ul>
+<html>
 
+<body>
+    <div class="SchoolPlanDiv">
+        <map name="image-map">
+            <area target="" alt="" title="B16" href="" coords="173,344,146,345,150,365,174,367" shape="poly"
+                (click)="GetRoomData('B16')">
+        </map>
+        <img class="schoolmap" src="assets/skoleplan.PNG" usemap="#image-map">
+    </div>
+    <div class="TableDiv">
+        <table>
+            <tbody>
+                <tr>
+                    <td>room name :</td>
+                    <td><span>{{roomData.Rd_RoomName}}</span></td>
+                </tr>
+                <tr>
+                    <td>creation time :</td>
+                    <td><span>{{roomData.Rd_Cts}}</span></td>
+                </tr>
+                <tr>
+                    <td>head height temperature :</td>
+                    <td><span>{{roomData.HeadTemperatureReading.Ts_Value}}°C</span></td>
+                </tr>
+                <tr>
+                    <td>Humidity :</td>
+                    <td><span>{{roomData.HumidityReading.Hum_Value}}%</span></td>
+                </tr>
+                <tr>
+                    <td>Feet height temperature :</td>
+                    <td><span>{{roomData.FeetTemperatureReading.Ts_Value}}°C</span></td>
+                </tr>
+                <tr>
+                    <td>Light :</td>
+                    <td><span>{{roomData.LightReading.Ls_Value}}</span></td>
+                </tr>
+                <tr>
+                    <td>Sound :</td>
+                    <td><span>{{roomData.SoundReading.Sr_Value}}</span></td>
+                </tr>
+                <tr>
+                    <td>Curtains :</td>
+                    <td><span>{{roomData.CurtainReading.Cur_Value}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

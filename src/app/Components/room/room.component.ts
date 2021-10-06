@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
+import { RoomReading, RoomService } from 'src/app/Services/room.service';
 
-export class Room{
-  constructor(
-
-  public roomName: string,
-  public temp: number,
-  public creationDate: Date
-  ){}
-}
 
 @Component({
   selector: 'app-room',
@@ -18,24 +10,28 @@ export class Room{
 })
 export class RoomComponent implements OnInit {
 
-  rooms: Room[] = [];
-  SpecificTemperatureUrl = "http://192.168.1.71:5001/Webpage/GetTemp?roomName=B16";
-  AllTemperaturesUrl = "http://192.168.1.71:5001/Webpage/getAllTemp";
+   public roomData: RoomReading = {} as RoomReading
+  errorMessage : string;
 
-
-  constructor(private httpClient: HttpClient) { }
-
+  constructor(private room: RoomService) { }
   ngOnInit(): void {
-    this.getRooms();
+    this.getRoom("B16");
   }
 
-  getRooms(){
-    this.httpClient.get<any>(this.AllTemperaturesUrl).subscribe(
-      Response => {
-        console.log(Response);
-        this.rooms = Response;
-      }
-    )
+  async getRoom(roomName : string){
+    this.room.GetRoomData(roomName)
+    .subscribe(
+      data => {
+      this.roomData = data;
+      console.log(this.roomData);
+     });
+    }
+    public GetRoomData(roomName:string) {
+      console.log("calling GetRoomData with " + roomName)
+    
+      this.getRoom(roomName);
+    }
   }
 
-}
+  
+
