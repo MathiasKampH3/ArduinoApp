@@ -1,18 +1,17 @@
-  .SchoolPlanDiv{
-    float: left;
-    width: 64%;
-    height: auto;
-    /* background-color: red; */
-  }
-  .TableDiv{
-    float:right;
-    width:35%;
-    /* background-color: blue; */
-    padding-top: 10%;
+   .SchoolPlanDiv{
+    display: flex;
+    justify-content: center;
   }
 
-  .schoolmap{
-    padding-left :54%;
-    
+
+  .container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
   }
 
+  .tableContainer{
+    justify-content: center;
+    display: flex;
+    height: max-content;
+  }
